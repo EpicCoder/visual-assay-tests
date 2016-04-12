@@ -72,6 +72,11 @@
     <Compile Include="ActivityElement\AndroidLabel.cs" />
     <Compile Include="ActivityElement\AndroidList.cs" />
     <Compile Include="ActivityElement\BaseAndroidElement.cs" />
+    <Compile Include="ActivityRepo\Browser\AssayCreateDialog.cs" />
+    <Compile Include="ActivityRepo\Browser\AssayDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
+    <Compile Include="ActivityRepo\Browser\FlowCreateDialog.cs" />
+    <Compile Include="ActivityRepo\Browser\FlowTypeDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
     <Compile Include="Appium.cs" />
     <Compile Include="CommonOperation.cs" />
