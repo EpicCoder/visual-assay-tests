@@ -77,6 +77,14 @@
     <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
     <Compile Include="ActivityRepo\Browser\FlowCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\FlowTypeDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryActivity.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryCreateDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryDeleteElementDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryElementActivity.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryPermissionErrorDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryPropertyDialog.cs" />
+    <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
     <Compile Include="Appium.cs" />
     <Compile Include="CommonOperation.cs" />
