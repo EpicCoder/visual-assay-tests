@@ -17,10 +17,13 @@ namespace android_test.ActivityElement
             try
             {
                 Element.Click();
+                ConsoleMessage.Pass(String.Format("{0}. Tap on button with name: {1}",
+                    ActivityName, ElementName));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                ConsoleMessage.Fail(String.Format("{0}. Can't tap on button with name: {1} and android id: {2}",
+                    ActivityName, ElementName, ElementId), ex);
                 throw;
             }
         }

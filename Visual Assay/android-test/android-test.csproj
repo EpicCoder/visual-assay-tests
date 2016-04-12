@@ -86,15 +86,19 @@
     <Compile Include="ActivityRepo\Library\LibraryPropertyDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
+    <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
     <Compile Include="ActivityRepo\Team\TeamDeleteDialog.cs" />
     <Compile Include="Appium.cs" />
     <Compile Include="CommonOperation.cs" />
+    <Compile Include="ConsoleMessage.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="TestRun.cs" />
+    <Compile Include="Test\TestRun.cs" />
+    <Compile Include="Test\TestInitialize.cs" />
+    <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

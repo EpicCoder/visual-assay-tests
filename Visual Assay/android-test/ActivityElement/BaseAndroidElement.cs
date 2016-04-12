@@ -12,31 +12,32 @@ namespace android_test.ActivityElement
 
         protected BaseAndroidElement(string elementId, string elementName, string activityName)
         {
+            ElementName = elementName;
+            ActivityName = activityName;
             try
             {
                 Element = Appium.Instance.Driver.FindElementById(elementId);
-                ElementName = elementName;
-                ActivityName = activityName;
             }
             catch (Exception ex)
             {
-
+                ConsoleMessage.Fail(String.Format("{0}. Can't find element with name: {1} and android id: {2}",
+                    ActivityName, elementName, elementId), ex);
                 throw;
             }
         }
 
         protected BaseAndroidElement(string elementName, string activityName)
         {
+            ElementName = elementName;
             try
             {
                 Element = Appium.Instance.Driver.FindElementByName(elementName);
-                ElementName = elementName;
                 ActivityName = activityName;
                 ElementId = "No id";
             }
             catch (Exception ex)
             {
-
+                ConsoleMessage.Fail(String.Format("{0}. Can't find element with name: {1}", ActivityName, elementName), ex);
                 throw;
             }
         }

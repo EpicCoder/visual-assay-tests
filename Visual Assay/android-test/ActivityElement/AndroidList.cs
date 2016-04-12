@@ -46,6 +46,7 @@ namespace android_test.ActivityElement
         {
             try
             {
+                CommonOperation.Delay(1);
                 int currentCount = Element.FindElementsByClassName(className).Count;
                 Assert.AreEqual(expectedCount, currentCount,
                     "Current element count: " + currentCount + " not equal to expected: " + expectedCount);
@@ -61,6 +62,7 @@ namespace android_test.ActivityElement
         {
             try
             {
+                CommonOperation.Delay(1);
                 int currentCount = Element.FindElementsById(id).Count;
                 Assert.AreEqual(expectedCount, currentCount,
                     "Current element count: " + currentCount + " not equal to expected: " + expectedCount);

@@ -1,4 +1,7 @@
-﻿using android_test.ActivityElement;
+﻿using System;
+using android_test.ActivityElement;
+using OpenQA.Selenium.Appium.Android;
+using OpenQA.Selenium.Appium.MultiTouch;
 
 namespace android_test.ActivityRepo.Team
 {
@@ -53,6 +56,22 @@ namespace android_test.ActivityRepo.Team
                 string id = "team_dismiss_button";
                 string name = "Team Dismiss";
                 return new AndroidButton(id, name, ActivityName);
+            }
+        }
+
+        public static void AddUserToTeam(string userName)
+        {
+            try
+            {
+                AndroidElement dragItem = UserList.FindElement(userName);
+                AndroidElement dropItem = TeamMemberList.GetInternalElement();
+                TouchAction action = new TouchAction(Appium.Instance.Driver);
+                action.Press(dragItem).Wait(1500).MoveTo(dropItem).Release().Perform();
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't drag user with name: {1} and drop to team", ActivityName, userName), ex);
+                throw;
             }
         }
     }

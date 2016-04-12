@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using android_test.Entity;
 
 namespace android_test
 {
@@ -7,6 +9,16 @@ namespace android_test
         private static Settings _instance;
 
         public string AppPath { get; private set; }
+        public string Team { get; private set; }
+        public User User1 { get; private set; }
+        public User User2 { get; private set; }
+        public User User3 { get; private set; }
+        //test setting
+        public int LoginDelay { get; private set; }
+        public int LoginTimeout { get; private set; }
+        public int InitTimeout { get; private set; }
+        public int ShareDelay { get; private set; }
+        public string Version { get; private set; }
 
         public static Settings Instance
         {
@@ -23,6 +35,18 @@ namespace android_test
         private Settings()
         {
             AppPath = ConfigurationManager.AppSettings["appPath"];
+            User1 = new User(ConfigurationManager.AppSettings["userName1"],
+                ConfigurationManager.AppSettings["userPass1"]);
+            User2 = new User(ConfigurationManager.AppSettings["userName2"],
+                ConfigurationManager.AppSettings["userPass2"]);
+            User3 = new User(ConfigurationManager.AppSettings["userName3"],
+                ConfigurationManager.AppSettings["userPass3"]);
+            Team = ConfigurationManager.AppSettings["team"];
+            LoginDelay = Convert.ToInt32(ConfigurationManager.AppSettings["loginDelay"]);
+            ShareDelay = Convert.ToInt32(ConfigurationManager.AppSettings["shareDelay"]);
+            LoginTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["timeout"]);
+            InitTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["initTimeout"]);
+            Version = ConfigurationManager.AppSettings["version"];
         }
     }
 }
