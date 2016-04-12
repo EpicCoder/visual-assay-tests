@@ -86,6 +86,9 @@
     <Compile Include="ActivityRepo\Library\LibraryPropertyDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
+    <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
+    <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
+    <Compile Include="ActivityRepo\Team\TeamDeleteDialog.cs" />
     <Compile Include="Appium.cs" />
     <Compile Include="CommonOperation.cs" />
     <Compile Include="Entity\User.cs" />
