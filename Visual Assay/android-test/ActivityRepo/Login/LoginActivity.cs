@@ -54,24 +54,26 @@ namespace android_test.ActivityRepo.Login
         {
             string expectedActivity = ".ProjectsBrowserActivity";
             double timeOutInMillSeconds = TimeSpan.FromSeconds(timeout).TotalMilliseconds;
+            Stopwatch sw = new Stopwatch();
             try
             {
-                Stopwatch sw = new Stopwatch();
                 sw.Start();
                 while (sw.ElapsedMilliseconds < timeOutInMillSeconds)
                 {
                     if (Appium.Instance.Driver.CurrentActivity == expectedActivity)
                     {
                         sw.Stop();
-                        Console.WriteLine("Login time: {0} sec.", TimeSpan.FromMilliseconds(sw.ElapsedMilliseconds).TotalSeconds);
+                        ConsoleMessage.Pass(String.Format("{0}. Login success. Login time: {1}",
+                            ActivityName, TimeSpan.FromMilliseconds(sw.ElapsedMilliseconds).TotalSeconds));
                         return;
                     }
                 }
                 Assert.Fail("{0}. Login timeout: {1} sec.", ActivityName, timeout);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                ConsoleMessage.Fail(String.Format("{0}. Can't Login",
+                    ActivityName), ex);
                 throw;
             }
         }

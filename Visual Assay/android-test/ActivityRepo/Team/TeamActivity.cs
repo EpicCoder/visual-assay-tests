@@ -67,6 +67,7 @@ namespace android_test.ActivityRepo.Team
                 AndroidElement dropItem = TeamMemberList.GetInternalElement();
                 TouchAction action = new TouchAction(Appium.Instance.Driver);
                 action.Press(dragItem).Wait(1500).MoveTo(dropItem).Release().Perform();
+                ConsoleMessage.Pass(String.Format("{0}. Drag user with name: {1} and drop to team", ActivityName, userName));
             }
             catch (Exception ex)
             {

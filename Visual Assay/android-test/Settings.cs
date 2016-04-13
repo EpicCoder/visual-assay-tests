@@ -41,12 +41,13 @@ namespace android_test
                 ConfigurationManager.AppSettings["userPass2"]);
             User3 = new User(ConfigurationManager.AppSettings["userName3"],
                 ConfigurationManager.AppSettings["userPass3"]);
-            Team = ConfigurationManager.AppSettings["team"];
             LoginDelay = Convert.ToInt32(ConfigurationManager.AppSettings["loginDelay"]);
             ShareDelay = Convert.ToInt32(ConfigurationManager.AppSettings["shareDelay"]);
             LoginTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["timeout"]);
             InitTimeout = Convert.ToInt32(ConfigurationManager.AppSettings["initTimeout"]);
             Version = ConfigurationManager.AppSettings["version"];
+            var team = ConfigurationManager.AppSettings["team"];
+            Team = String.Format("!{0}-{1}", Version, team);
         }
     }
 }

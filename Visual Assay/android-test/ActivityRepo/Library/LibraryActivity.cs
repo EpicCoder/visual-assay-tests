@@ -1,4 +1,8 @@
-﻿using android_test.ActivityElement;
+﻿using System;
+using System.Collections.ObjectModel;
+using android_test.ActivityElement;
+using NUnit.Framework;
+using OpenQA.Selenium.Appium;
 
 namespace android_test.ActivityRepo.Library
 {
@@ -124,6 +128,99 @@ namespace android_test.ActivityRepo.Library
                 string name = "Cancel Share";
                 return new AndroidButton(id, name, ActivityName);
             }
+        }
+
+        public static void CheckLibraryToShare(string libraryName)
+        {
+            try
+            {
+                ReadOnlyCollection<AppiumWebElement> libList =
+                    LibraryList.GetInternalElement().FindElementsById("library_row_layout");
+                foreach (var element in libList)
+                {
+                    if (element.FindElementById("library_title").Text == libraryName)
+                    {
+                        element.Click();
+                        element.FindElementById("chkLibrary").Click();
+                        CommonOperation.Delay(1);
+                        Assert.True(Boolean.Parse(element.FindElementById("chkLibrary").GetAttribute("checked")),
+                            "Library " + libraryName + " checkbox status unchecked after click on checkbox");
+                        ConsoleMessage.Pass(String.Format("{0}. Checked library for share with name: {1}", ActivityName, libraryName));
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't checked library for share with name: {1}", ActivityName, libraryName), ex);
+                throw;
+            }
+        }
+
+        public static void VerifyCantShareLibrary(string libraryName)
+        {
+            try
+            {
+                ReadOnlyCollection<AppiumWebElement> libList =
+                    LibraryList.GetInternalElement().FindElementsById("library_row_layout");
+                foreach (var element in libList)
+                {
+                    if (element.FindElementById("library_title").Text == libraryName)
+                    {
+                        element.Click();
+                        element.FindElementById("chkLibrary").Click();
+                        CommonOperation.Delay(1);
+                        Assert.False(Boolean.Parse(element.FindElementById("chkLibrary").GetAttribute("checked")),
+                            "Can check " + libraryName + " checkbox without share permission");
+                        ConsoleMessage.Pass(String.Format("{0}. Can't Checked library for share with name: {1} without permission", ActivityName, libraryName));
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can checked library for share with name: {1} without permission", ActivityName, libraryName), ex);
+                throw;
+            }
+        }
+
+        public static void DeleteAllLibs()
+        {
+            try
+            {
+                string standard = "Standard";
+                ReadOnlyCollection<AppiumWebElement> libList =
+                    LibraryList.GetInternalElement().FindElementsById("library_row_layout");
+                int shift = 0;
+                while (libList.Count > 1)
+                {
+                    string libName = libList[shift].FindElementById("library_title").Text;
+                    if (libName == standard)
+                    {
+                        shift++;
+                    }
+                    ConsoleMessage.Pass(String.Format("{0}. Select library with name: {1}", ActivityName, libName));
+                    libList[shift].Click();
+                    DeleteLibrary.Tap();
+                    LibraryDeleteDialog.Delete.Tap();
+                    libList =
+                        LibraryList.GetInternalElement().FindElementsById("library_row_layout");
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't delete all libraries: {1}", ActivityName), ex);
+                throw;
+            }
+        }
+
+        public static void SelectAndShareLibrary(string baseLibrary, string shareName)
+        {
+            LibraryList.FindAndTap(baseLibrary);
+            ShareLibrary.Tap();
+            CheckLibraryToShare(baseLibrary);
+            ShareLibraryName.EnterText(shareName);
+            Next.Tap();
         }
     }
 }
