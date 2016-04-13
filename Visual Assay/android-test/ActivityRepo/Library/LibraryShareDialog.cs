@@ -91,6 +91,25 @@ namespace android_test.ActivityRepo.Library
             }
         }
 
+        public static void Unshare(string shareWith)
+        {
+            try
+            {
+                AndroidElement dragItem = (AndroidElement) ShareWithList.GetInternalElement().FindElementByName(shareWith);
+                AndroidElement dropItem = TeamList.GetInternalElement();
+                TouchAction action = new TouchAction(Appium.Instance.Driver);
+                action.Press(dragItem).Wait(1500).MoveTo(dragItem).Wait(1500).MoveTo(dropItem).Wait(1500).Release();
+                MultiAction multi = new MultiAction(Appium.Instance.Driver);
+                multi.Add(action).Perform();
+                ConsoleMessage.Pass(String.Format("{0}. Unshare. Drag user with name: {1} and drop to team", ActivityName, shareWith));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't unshare. Can't drag user with name: {1} and drop to team", ActivityName, shareWith), ex);
+                throw;
+            }
+        }
+
         public static void SetPermission(Permission permission)
         {
             try

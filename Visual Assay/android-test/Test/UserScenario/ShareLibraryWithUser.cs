@@ -231,6 +231,48 @@ namespace android_test.Test.UserScenario
             TabMenu.Logout.Tap();
         }
 
+        [Test]
+        public void Unshare()
+        {
+            string shareName = string.Format("{0}=Unshare", _version);
+            Permission permission = new Permission(true, true, true, true);
+
+            //share on owner
+            Appium.Instance.Driver.LaunchApp();
+            LoginActivity.LoginStep(_user1, _timeout);
+            TabMenu.Library.Tap();
+            LibraryActivity.SelectAndShareLibrary(_baseLibrary, shareName);
+            LibraryShareDialog.ShareWithUserStep(_team, _user2.Name, permission);
+            CommonOperation.Delay(_shareDelay);
+            TabMenu.Logout.Tap();
+
+            //verify on recipient
+            LoginActivity.LoginStep(_user2, _timeout);
+            CommonOperation.Delay(_loginDelay);
+            TabMenu.Library.Tap();
+            LibraryActivity.LibraryList.FindAndTap(shareName);
+            LibraryActivity.ElementList.VerifyElementCountById(20, "library_document_icon");
+            TabMenu.Logout.Tap();
+
+            //unshare on owner
+            LoginActivity.LoginStep(_user1, _timeout);
+            TabMenu.Library.Tap();
+            LibraryActivity.LibraryList.FindAndTap(shareName);
+            LibraryActivity.Permission.Tap();
+            LibraryShareDialog.Unshare(_user2.Name);
+            LibraryShareDialog.ShareWithList.VerifyElementCountById(0, "user_picture");
+            LibraryShareDialog.Ok.Tap();
+            CommonOperation.Delay(_shareDelay);
+            TabMenu.Logout.Tap();
+
+            //verify on recipient, library not exist
+            LoginActivity.LoginStep(_user2, _timeout);
+            CommonOperation.Delay(_loginDelay);
+            TabMenu.Library.Tap();
+            LibraryActivity.VerifyLibraryNotExist(shareName);
+
+        }
+
 
         [TearDown]
         public void TearDown()

@@ -214,6 +214,21 @@ namespace android_test.ActivityRepo.Library
             }
         }
 
+        public static void VerifyLibraryNotExist(string libraryName)
+        {
+            try
+            {
+                Assert.True(LibraryList.GetInternalElement().FindElementsByName(libraryName).Count == 0, "Library with name: " + libraryName + " exist");
+                ConsoleMessage.Pass(String.Format("{0}. Verify, library with name: {1} not exist", ActivityName, libraryName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Verify fail. Library with name: {1} still exist", ActivityName, libraryName), ex);
+                throw;
+            }
+        }
+
+
         public static void SelectAndShareLibrary(string baseLibrary, string shareName)
         {
             LibraryList.FindAndTap(baseLibrary);
