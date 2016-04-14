@@ -7,7 +7,7 @@ namespace android_test.ActivityElement
     {
         protected AndroidElement Element;
         protected string ActivityName;
-        protected string ElementName;
+        public string ElementName;
         protected string ElementId;
 
         protected BaseAndroidElement(string elementId, string elementName, string activityName)

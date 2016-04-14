@@ -77,6 +77,21 @@
     <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
     <Compile Include="ActivityRepo\Browser\FlowCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\FlowTypeDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowActivity.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowElementDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowLogActivity.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowPermissionErrorDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowPluginSelectFlowDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowPropertyDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowReshareDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowSelectAssayDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowSelectLibraryDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowShareDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowShareNestedDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowSignActivity.cs" />
+    <Compile Include="ActivityRepo\Flow\FlowStartDialog.cs" />
+    <Compile Include="ActivityRepo\Flow\NavPanel.cs" />
     <Compile Include="ActivityRepo\Library\LibraryActivity.cs" />
     <Compile Include="ActivityRepo\Library\LibraryCreateDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryDeleteDialog.cs" />
@@ -86,6 +101,7 @@
     <Compile Include="ActivityRepo\Library\LibraryPropertyDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
+    <Compile Include="ActivityRepo\Flow\SignDialog.cs" />
     <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
@@ -99,6 +115,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Test\TestRun.cs" />
     <Compile Include="Test\TestInitialize.cs" />
+    <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
   <ItemGroup>
