@@ -18,7 +18,7 @@ namespace android_test.Test
         [OneTimeSetUp]
         public void GlobalTestSetup()
         {
-            _teamName = String.Format("!{0}-{1}", Settings.Instance.Version, Settings.Instance.Team);
+            _teamName = Settings.Instance.Team;
             _initTimeout = Settings.Instance.InitTimeout;
             _timeout = Settings.Instance.LoginTimeout;
             ExcelReport excel =
@@ -26,6 +26,7 @@ namespace android_test.Test
             try
             {
                 //init login
+                ConsoleMessage.StartTest("Global Setup", "GlobalSetup");
                 Appium.Instance.Driver.LaunchApp();
                 LoginActivity.LoginStep(Settings.Instance.User1, _initTimeout);
                 TabMenu.Logout.Tap();
@@ -47,10 +48,12 @@ namespace android_test.Test
                 TeamActivity.TeamMemberList.VerifyElementCountById(3, "user_picture");
                 CommonOperation.Delay(5);
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
             }
             catch (Exception)
             {
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
                 throw;
             }
         }
@@ -60,6 +63,7 @@ namespace android_test.Test
         {
             try
             {
+                ConsoleMessage.StartTest("Global Cleanup", "GlobalSetup");
                 Appium.Instance.Driver.LaunchApp();
                 LoginActivity.LoginStep(Settings.Instance.User1, _timeout);
                 TabMenu.Teams.Tap();
@@ -67,10 +71,13 @@ namespace android_test.Test
                 TeamActivity.Dismiss.Tap();
                 TeamDeleteDialog.Delete.Tap();
                 CommonOperation.Delay(5);
+                Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
             }
             catch (Exception)
             {
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
                 throw;
             }
         }

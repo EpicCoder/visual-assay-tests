@@ -100,8 +100,8 @@
     <Compile Include="ActivityRepo\Library\LibraryPermissionErrorDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryPropertyDialog.cs" />
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
-    <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
     <Compile Include="ActivityRepo\Flow\SignDialog.cs" />
+    <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
     <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
@@ -128,6 +128,7 @@
       <Name>test-report</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

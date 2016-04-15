@@ -7,11 +7,6 @@ namespace test_report
     {
         private LogStatus _testStatus = LogStatus.Unknown;
         private TestModel _test;
-//        public TestManager(string name)
-//        {
-//            _test = new TestModel();
-//            _test.Name = name;
-//        }
 
         public void Log(LogStatus status, string stepName)
         {
@@ -70,7 +65,6 @@ namespace test_report
         public void EndTest()
         {
             _test.EndTest();
-
             //write to report
             ExcelReport.WriteToMainSheet(_test);
             ExcelReport.WriteToGroupSheet(_test);

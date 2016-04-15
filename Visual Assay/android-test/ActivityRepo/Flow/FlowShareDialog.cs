@@ -80,9 +80,10 @@ namespace android_test.ActivityRepo.Flow
             try
             {
                 string selector =
-                    "new UiScrollable(new UiSelector().resourceId(\"com.assayrt:id/users\")).scrollIntoView(text(\""+ userName + "\"))";
+                    "new UiScrollable(new UiSelector().resourceId(\"com.assayrt:id/users\")).scrollIntoView(text(\"" +
+                    userName + "\"))";
                 AndroidElement dragItem =
-                    Appium.Instance.Driver.FindElementByAndroidUIAutomator(selector);
+                    (AndroidElement)TeamMemberList.GetInternalElement().FindElementByAndroidUIAutomator(selector);
                 AndroidElement dropItem = DropHere.GetInternalElement();
                 TouchAction action = new TouchAction(Appium.Instance.Driver);
                 action.Press(dragItem).Wait(1500).MoveTo(dropItem).Release().Perform();
@@ -138,6 +139,7 @@ namespace android_test.ActivityRepo.Flow
         public static void ShareWithUserStep(string teamName, string userName, Permission permission)
         {
             TeamList.FindAndTap(teamName);
+            TeamMemberList.FindAndTap(userName);
             AddUser(userName);
             ShareWithList.VerifyElementCountById(1, "user_picture");
             SetPermission(permission);

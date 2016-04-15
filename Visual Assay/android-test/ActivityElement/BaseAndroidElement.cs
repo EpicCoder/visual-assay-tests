@@ -6,22 +6,23 @@ namespace android_test.ActivityElement
     class BaseAndroidElement
     {
         protected AndroidElement Element;
-        protected string ActivityName;
+        public string ActivityName;
         public string ElementName;
-        protected string ElementId;
+        public string ElementId;
 
         protected BaseAndroidElement(string elementId, string elementName, string activityName)
         {
             ElementName = elementName;
             ActivityName = activityName;
+            ElementId = elementId;
             try
             {
-                Element = Appium.Instance.Driver.FindElementById(elementId);
+                Element = Appium.Instance.Driver.FindElementById(ElementId);
             }
             catch (Exception ex)
             {
                 ConsoleMessage.Fail(String.Format("{0}. Can't find element with name: {1} and android id: {2}",
-                    ActivityName, elementName, elementId), ex);
+                    ActivityName, ElementName, ElementId), ex);
                 throw;
             }
         }
@@ -31,13 +32,13 @@ namespace android_test.ActivityElement
             ElementName = elementName;
             try
             {
-                Element = Appium.Instance.Driver.FindElementByName(elementName);
+                Element = Appium.Instance.Driver.FindElementByName(ElementName);
                 ActivityName = activityName;
                 ElementId = "No id";
             }
             catch (Exception ex)
             {
-                ConsoleMessage.Fail(String.Format("{0}. Can't find element with name: {1}", ActivityName, elementName), ex);
+                ConsoleMessage.Fail(String.Format("{0}. Can't find element with name: {1}", ActivityName, ElementName), ex);
                 throw;
             }
         }
