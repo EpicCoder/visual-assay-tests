@@ -3,6 +3,7 @@ using android_test.ActivityRepo;
 using android_test.ActivityRepo.Login;
 using android_test.ActivityRepo.Team;
 using NUnit.Framework;
+using test_report;
 
 namespace android_test.Test
 {
@@ -20,6 +21,8 @@ namespace android_test.Test
             _teamName = String.Format("!{0}-{1}", Settings.Instance.Version, Settings.Instance.Team);
             _initTimeout = Settings.Instance.InitTimeout;
             _timeout = Settings.Instance.LoginTimeout;
+            ExcelReport excel =
+                new ExcelReport(TestContext.CurrentContext.TestDirectory + "\\" + Settings.Instance.Version + "-outPut");
             try
             {
                 //init login

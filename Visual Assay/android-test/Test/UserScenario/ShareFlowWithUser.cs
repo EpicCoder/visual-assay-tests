@@ -43,6 +43,7 @@ namespace android_test.Test.UserScenario
             //            create assay
             try
             {
+                ConsoleMessage.StartTest("Share flow with user: Setup", "ShareFlow");
                 Appium.Instance.Driver.LaunchApp();
                 LoginActivity.LoginStep(_user1, _timeout);
                 BrowserActivity.CreateAssay(_assay);
@@ -53,10 +54,12 @@ namespace android_test.Test.UserScenario
                 BrowserActivity.AssayList.FindAndTap(_assayRec);
                 TabMenu.Logout.Tap();
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
             }
             catch (Exception)
             {
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
                 throw;
             }
         }
@@ -73,6 +76,7 @@ namespace android_test.Test.UserScenario
             string flowName = "View";
             Permission permission = new Permission(true, false, false, false);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: View", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -128,6 +132,7 @@ namespace android_test.Test.UserScenario
             string flowName = "Add";
             Permission permission = new Permission(true, false, false, true);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: Add", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -182,6 +187,7 @@ namespace android_test.Test.UserScenario
             string flowName = "Modify";
             Permission permission = new Permission(true, false, true, false);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: Modify", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -236,6 +242,7 @@ namespace android_test.Test.UserScenario
             Permission permission = new Permission(true, true, false, false);
             Permission allPermission = new Permission(true, true, true, true);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: Share", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -297,6 +304,7 @@ namespace android_test.Test.UserScenario
             string flowName = "BlockedBase";
             Permission permission = new Permission(true, true, true, true);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: Share As Blocked", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -337,6 +345,7 @@ namespace android_test.Test.UserScenario
             string flowName = "Unshare";
             Permission permission = new Permission(true, true, true, true);
             //create flow
+            ConsoleMessage.StartTest("Share flow with user: Unshare", "ShareFlow");
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
             BrowserActivity.AssayList.FindAndTap(_assay);
@@ -386,6 +395,7 @@ namespace android_test.Test.UserScenario
         public void TearDown()
         {
             Appium.Instance.Driver.CloseApp();
+            ConsoleMessage.EndTest();
         }
 
         [OneTimeTearDown]
@@ -393,6 +403,7 @@ namespace android_test.Test.UserScenario
         {
             try
             {
+                ConsoleMessage.StartTest("Share flow with user: Clean up", "ShareFlow");
                 Appium.Instance.Driver.LaunchApp();
                 LoginActivity.LoginStep(_user1, _timeout);
                 BrowserActivity.AssayList.FindAndTap(_assay);
@@ -410,6 +421,7 @@ namespace android_test.Test.UserScenario
             finally
             {
                 Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
             }
         }
     }
