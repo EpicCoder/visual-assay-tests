@@ -43,6 +43,23 @@ namespace android_test.ActivityElement
             }
         }
 
+        protected BaseAndroidElement(AndroidElement element, string activityName)
+        {
+
+            try
+            {
+                Element = element;
+                ElementName = "No Name";
+                ActivityName = activityName;
+                ElementId = "No id";
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't find element", ActivityName), ex);
+                throw;
+            }
+        }
+
         public AndroidElement GetInternalElement()
         {
             return Element;

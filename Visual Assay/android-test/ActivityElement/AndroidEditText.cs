@@ -1,11 +1,16 @@
 ﻿using System;
 using NUnit.Framework;
+using OpenQA.Selenium.Appium.Android;
 
 namespace android_test.ActivityElement
 {
     class AndroidEditText : BaseAndroidElement
     {
         public AndroidEditText(string elementId, string elementName, string activityName) : base(elementId, elementName, activityName)
+        {
+        }
+
+        public AndroidEditText(AndroidElement element, string activityName) : base(element, activityName)
         {
         }
 

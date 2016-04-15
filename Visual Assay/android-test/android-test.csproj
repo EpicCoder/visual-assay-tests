@@ -102,6 +102,15 @@
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Flow\SignDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitActivity.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitCreateDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitFieldDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitFieldDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitFormulaDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitGroupActivity.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitGroupNameDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitSelectKeyDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Jit\JitUngroupDialog.cs" />
     <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
