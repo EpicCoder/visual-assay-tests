@@ -41,6 +41,7 @@ namespace android_test.Test.UserScenario
             string shareName = string.Format("{0}=View", _version);
             Permission permission = new Permission(true, false, false, false);
 
+            ConsoleMessage.StartTest("Share library with user: View", "ShareLibrary");
             //share on owner
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
@@ -83,6 +84,7 @@ namespace android_test.Test.UserScenario
             string shareName = string.Format("{0}=Add", _version);
             Permission permission = new Permission(true, false, false, true);
 
+            ConsoleMessage.StartTest("Share library with user: Add", "ShareLibrary");
             //share on owner
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
@@ -135,6 +137,7 @@ namespace android_test.Test.UserScenario
             string shareName = string.Format("{0}=Modify", _version);
             Permission permission = new Permission(true, false, true, false);
 
+            ConsoleMessage.StartTest("Share library with user: Modify", "ShareLibrary");
             //share on owner
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
@@ -187,6 +190,7 @@ namespace android_test.Test.UserScenario
             Permission permission = new Permission(true, true, false, false);
             Permission allPermission = new Permission(true, true, true, true);
 
+            ConsoleMessage.StartTest("Share library with user: Share", "ShareLibrary");
             //share on owner
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
@@ -237,6 +241,7 @@ namespace android_test.Test.UserScenario
             string shareName = string.Format("{0}=Unshare", _version);
             Permission permission = new Permission(true, true, true, true);
 
+            ConsoleMessage.StartTest("Share library with user: Unshare", "ShareLibrary");
             //share on owner
             Appium.Instance.Driver.LaunchApp();
             LoginActivity.LoginStep(_user1, _timeout);
@@ -278,19 +283,27 @@ namespace android_test.Test.UserScenario
         public void TearDown()
         {
             Appium.Instance.Driver.CloseApp();
+            ConsoleMessage.EndTest();
         }
 
         [OneTimeTearDown]
         public void AfterClass()
         {
             //clean up after test
-            Appium.Instance.Driver.LaunchApp();
-            LoginActivity.LoginStep(_user1, _timeout);
-            TabMenu.Library.Tap();
-            LibraryActivity.DeleteAllLibs();
-            CommonOperation.Delay(3);
-            TabMenu.Logout.Tap();
-            Appium.Instance.Driver.CloseApp();
+            try
+            {
+                Appium.Instance.Driver.LaunchApp();
+                LoginActivity.LoginStep(_user1, _timeout);
+                TabMenu.Library.Tap();
+                LibraryActivity.DeleteAllLibs();
+                CommonOperation.Delay(3);
+                TabMenu.Logout.Tap();
+            }
+            finally
+            {
+                Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
+            }
         }
     }
 }
