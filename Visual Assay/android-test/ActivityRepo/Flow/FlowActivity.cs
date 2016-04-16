@@ -282,5 +282,41 @@ namespace android_test.ActivityRepo.Flow
                 throw;
             }
         }
+
+        public static void NavPanel(NavPanel panel)
+        {
+            try
+            {
+                var list = FlowNav().FindElementsByClassName("android.widget.TableRow");
+                switch (panel)
+                {
+                    case Flow.NavPanel.Parent:
+                        list[0].Click();
+                        ConsoleMessage.Pass(String.Format("{0}. Use nav panel, move to parent flow",
+                            ActivityName));
+                        break;
+                    case Flow.NavPanel.Nested1:
+                        list[0].Click();
+                        ConsoleMessage.Pass(String.Format("{0}. Use nav panel, move to nested#1 flow",
+                            ActivityName));
+                        break;
+                    case Flow.NavPanel.Nested2:
+                        list[0].Click();
+                        ConsoleMessage.Pass(String.Format("{0}. Use nav panel, move to nested#2 flow",
+                            ActivityName));
+                        break;
+                    default:
+                        ConsoleMessage.Fail(String.Format("{0}. Can't use nav panel, move to nested#2 flow",
+                            ActivityName), new Exception("Navpane exception"));
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't use nav panel, move to nested#2 flow",
+                    ActivityName), ex);
+                throw;
+            }
+        }
     }
 }

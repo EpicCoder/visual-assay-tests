@@ -102,6 +102,7 @@
     <Compile Include="ActivityRepo\Library\LibraryShareDialog.cs" />
     <Compile Include="ActivityRepo\Flow\SignDialog.cs" />
     <Compile Include="ActivityRepo\Login\LoginActivity.cs" />
+    <Compile Include="ActivityRepo\Plugin\Flow\FlowSelectNesting.cs" />
     <Compile Include="ActivityRepo\Plugin\Jit\JitActivity.cs" />
     <Compile Include="ActivityRepo\Plugin\Jit\JitGroupCreateDialog.cs" />
     <Compile Include="ActivityRepo\Plugin\Jit\JitFieldDeleteDialog.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Test\TestRun.cs" />
     <Compile Include="Test\TestInitialize.cs" />
+    <Compile Include="Test\UserScenario\FlowObject\ChangeNested.cs" />
     <Compile Include="Test\UserScenario\Jit.cs" />
     <Compile Include="Test\UserScenario\Plate.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
