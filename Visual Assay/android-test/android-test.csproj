@@ -111,6 +111,16 @@
     <Compile Include="ActivityRepo\Plugin\Jit\JitGroupNameDialog.cs" />
     <Compile Include="ActivityRepo\Plugin\Jit\JitSelectKeyDialog.cs" />
     <Compile Include="ActivityRepo\Plugin\Jit\JitUngroupDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateActivity.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateChooseLibraryDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateCreateSheetDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateDiluteDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateEditLabelDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateLabelDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateNameObjectDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateSelectionToolbar.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateSheetDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Plugin\Plate\PlateWellEditDialog.cs" />
     <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
@@ -125,6 +135,7 @@
     <Compile Include="Test\TestRun.cs" />
     <Compile Include="Test\TestInitialize.cs" />
     <Compile Include="Test\UserScenario\Jit.cs" />
+    <Compile Include="Test\UserScenario\Plate.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
