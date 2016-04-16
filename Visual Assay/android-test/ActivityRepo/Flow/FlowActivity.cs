@@ -296,12 +296,12 @@ namespace android_test.ActivityRepo.Flow
                             ActivityName));
                         break;
                     case Flow.NavPanel.Nested1:
-                        list[0].Click();
+                        list[1].Click();
                         ConsoleMessage.Pass(String.Format("{0}. Use nav panel, move to nested#1 flow",
                             ActivityName));
                         break;
                     case Flow.NavPanel.Nested2:
-                        list[0].Click();
+                        list[2].Click();
                         ConsoleMessage.Pass(String.Format("{0}. Use nav panel, move to nested#2 flow",
                             ActivityName));
                         break;
