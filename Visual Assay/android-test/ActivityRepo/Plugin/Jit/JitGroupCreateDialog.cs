@@ -7,7 +7,7 @@ using android_test.ActivityElement;
 
 namespace android_test.ActivityRepo.Plugin.Jit
 {
-    class JitCreateDialog
+    class JitGroupCreateDialog
     {
         static string ActivityName = "Jit Create Group Dialog";
 

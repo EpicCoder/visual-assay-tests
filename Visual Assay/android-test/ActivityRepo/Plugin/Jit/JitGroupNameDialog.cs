@@ -41,7 +41,7 @@ namespace android_test.ActivityRepo.Plugin.Jit
                     return new AndroidEditText(
                         Appium.Instance.Driver.FindElementByClassName(className), ActivityName);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     ConsoleMessage.Fail(String.Format("{0}. Can't find element by Class: {1}", ActivityName, className), ex);
                     throw;

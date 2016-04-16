@@ -168,6 +168,49 @@ namespace android_test.ActivityRepo.Flow
             }
         }
 
+        public static void OpenElement(string elementName)
+        {
+            try
+            {
+                var elementList = ElementList.GetInternalElement().FindElementsByClassName("android.widget.EditText");
+                for (int i = 0; i < elementList.Count; i++)
+                {
+                    var element = elementList[i];
+                    if (element.Text.Contains(elementName))
+                    {
+                        ElementList.GetInternalElement().FindElementsById("document_icon")[i].Click();
+                        break;
+                    }
+                }
+                ConsoleMessage.Pass(String.Format("{0}. Find and tap on flow element with name: {1} in flow list",
+                    ActivityName, elementName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(
+                    String.Format("{0}. Can't Find and tap on flow element with name: {1} in flow list",
+                        ActivityName, elementName), ex);
+                throw;
+            }
+        }
+
+        public static void OpenElement(int pos)
+        {
+            try
+            {
+                ElementList.GetInternalElement().FindElementsById("document_icon")[pos].Click();
+                ConsoleMessage.Pass(String.Format("{0}. Find and tap on flow element at position: {1} in flow list",
+                    ActivityName, pos));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(
+                    String.Format("{0}. Find and tap on flow element at position: {1} in flow list",
+                    ActivityName, pos), ex);
+                throw;
+            }
+        }
+
         public static void DeleteElement(string elementName)
         {
             AndroidElement dragItem = ElementList.FindElement(elementName);

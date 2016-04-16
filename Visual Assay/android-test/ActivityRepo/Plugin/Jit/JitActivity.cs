@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using android_test.ActivityElement;
+using NUnit.Framework;
 
 namespace android_test.ActivityRepo.Plugin.Jit
 {
@@ -228,6 +229,81 @@ namespace android_test.ActivityRepo.Plugin.Jit
                 string id = "import_from_template";
                 string name = "Load From Template";
                 return new AndroidButton(id, name, ActivityName);
+            }
+        }
+
+        public static void PopulateCell(int row, int col, string data)
+        {
+            try
+            {
+                var rowList = TableList.GetInternalElement().FindElementsById("row_layout");
+                var textList = rowList[row].FindElementsByClassName("android.widget.RelativeLayout");
+                textList[col].FindElementByClassName("android.widget.TextView").Click();
+                textList[col].FindElementByClassName("android.widget.EditText").SendKeys(data);
+                JitName.GetInternalElement().Click();
+                CommonOperation.HideKeyboard();
+                ConsoleMessage.Pass(String.Format("{0}. Populate Jit Cell[row: {1}, col: {2}] with text: {3}",
+                    ActivityName, row, col, data));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't populate Jit Cell[row: {1}, col: {2}] with text: {3}",
+                    ActivityName, row, col, data), ex);
+                throw;
+            }
+        }
+
+        public static void VerifyCell(int row, int col, string data)
+        {
+            try
+            {
+                var rowList = TableList.GetInternalElement().FindElementsById("row_layout");
+                var textList = rowList[row].FindElementsByClassName("android.widget.RelativeLayout");
+                textList[col].FindElementByName(data);
+                CommonOperation.HideKeyboard();
+                ConsoleMessage.Pass(String.Format("{0}. Verify Jit Cell[row: {1}, col: {2}] with text: {3}",
+                    ActivityName, row, col, data));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't verify Jit Cell[row: {1}, col: {2}] with text: {3}",
+                    ActivityName, row, col, data), ex);
+                throw;
+            }
+        }
+
+        public static void VerifyGroupIsShown(int row, string groupName)
+        {
+            try
+            {
+                var rowList = TableList.GetInternalElement().FindElementsById("row_layout");
+                string currName = rowList[row].FindElementById("group_text").Text;
+                Assert.AreEqual(groupName, currName, "Currnet name: " + currName + " not equal to expected: " + groupName);
+                ConsoleMessage.Pass(String.Format("{0}. Verify, group is shown",
+                    ActivityName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't verify, group is not shown",
+                    ActivityName), ex);
+                throw;
+            }
+        }
+
+        public static void VerifyGroupIsHide()
+        {
+            try
+            {
+                var rowList = TableList.GetInternalElement().FindElementsById("row_layout");
+                Assert.IsTrue(rowList[0].FindElementsById("group_text").Count == 0, "Group is still shows");
+                ConsoleMessage.Pass(String.Format("{0}. Verify, group is hide",
+                    ActivityName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't verify, group is not hide",
+                    ActivityName), ex);
+                throw;
             }
         }
     }
