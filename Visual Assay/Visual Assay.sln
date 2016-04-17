@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "android-test", "android-tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test-report", "test-report\test-report.csproj", "{E8FB2F30-6499-4E7C-A07F-2DFBBE87E2B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "desktop-test", "desktop-test\desktop-test.csproj", "{625A6A24-CA7F-4EB0-AF4C-6F4552F59EEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{E8FB2F30-6499-4E7C-A07F-2DFBBE87E2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8FB2F30-6499-4E7C-A07F-2DFBBE87E2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8FB2F30-6499-4E7C-A07F-2DFBBE87E2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625A6A24-CA7F-4EB0-AF4C-6F4552F59EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625A6A24-CA7F-4EB0-AF4C-6F4552F59EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625A6A24-CA7F-4EB0-AF4C-6F4552F59EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625A6A24-CA7F-4EB0-AF4C-6F4552F59EEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
