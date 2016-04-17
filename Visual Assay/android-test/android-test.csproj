@@ -72,6 +72,7 @@
     <Compile Include="ActivityElement\AndroidLabel.cs" />
     <Compile Include="ActivityElement\AndroidList.cs" />
     <Compile Include="ActivityElement\BaseAndroidElement.cs" />
+    <Compile Include="ActivityRepo\ArchiveActivity.cs" />
     <Compile Include="ActivityRepo\Browser\AssayCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\AssayDeleteDialog.cs" />
     <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Test\UserScenario\Jit.cs" />
     <Compile Include="Test\UserScenario\Plate.cs" />
     <Compile Include="Test\UserScenario\Pulse.cs" />
+    <Compile Include="Test\UserScenario\RecycleBin.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
