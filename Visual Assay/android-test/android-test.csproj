@@ -151,6 +151,7 @@
     <Compile Include="Test\UserScenario\ShareAssayWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareFlowAndRemoveUserFromTeam.cs" />
+    <Compile Include="Test\UserScenario\ShareLibraryAndRemoveUserFromTeam.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
   <ItemGroup>

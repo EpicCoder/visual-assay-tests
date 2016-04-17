@@ -237,5 +237,12 @@ namespace android_test.ActivityRepo.Library
             ShareLibraryName.EnterText(shareName);
             Next.Tap();
         }
+
+        public static void CreateLibrary(string libName)
+        {
+            AddLibrary.Tap();
+            LibraryCreateDialog.LibraryName.EnterText(libName);
+            LibraryCreateDialog.Create.Tap();
+        }
     }
 }

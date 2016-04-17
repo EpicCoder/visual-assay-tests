@@ -292,6 +292,7 @@ namespace android_test.Test.UserScenario
             //clean up after test
             try
             {
+                ConsoleMessage.StartTest("Share library with user: Cleanup", "ShareLibrary");
                 Appium.Instance.Driver.LaunchApp();
                 LoginActivity.LoginStep(_user1, _timeout);
                 TabMenu.Library.Tap();
