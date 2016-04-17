@@ -96,6 +96,27 @@ namespace android_test.ActivityRepo.Flow
             }
         }
 
+        public static void AddTeam(string teamName)
+        {
+            try
+            {
+                string selector =
+                    "new UiScrollable(new UiSelector().resourceId(\"com.assayrt:id/teams\")).scrollIntoView(text(\"" +
+                    teamName + "\"))";
+                AndroidElement dragItem =
+                    (AndroidElement)TeamList.GetInternalElement().FindElementByAndroidUIAutomator(selector);
+                AndroidElement dropItem = DropHere.GetInternalElement();
+                TouchAction action = new TouchAction(Appium.Instance.Driver);
+                action.Press(dragItem).Wait(1500).MoveTo(dropItem).Release().Perform();
+                ConsoleMessage.Pass(String.Format("{0}. Drag team with name: {1} and drop to shareWith", ActivityName, teamName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't drag team with name: {1} and drop to shareWith", ActivityName, teamName), ex);
+                throw;
+            }
+        }
+
         public static void Unshare(string shareWith)
         {
             try
@@ -141,6 +162,15 @@ namespace android_test.ActivityRepo.Flow
             TeamList.FindAndTap(teamName);
             TeamMemberList.FindAndTap(userName);
             AddUser(userName);
+            ShareWithList.VerifyElementCountById(1, "user_picture");
+            SetPermission(permission);
+            Ok.Tap();
+        }
+
+        public static void ShareWithTeamStep(string teamName, Permission permission)
+        {
+            TeamList.FindAndTap(teamName);
+            AddTeam(teamName);
             ShareWithList.VerifyElementCountById(1, "user_picture");
             SetPermission(permission);
             Ok.Tap();

@@ -75,5 +75,27 @@ namespace android_test.ActivityRepo.Team
                 throw;
             }
         }
+
+        public static void RemoveUserFromTeam(string userName)
+        {
+            try
+            {
+                AndroidElement dragItem = TeamMemberList.FindElement(userName);
+                AndroidElement dropItem = UserList.GetInternalElement();
+                TouchAction action = new TouchAction(Appium.Instance.Driver);
+                action.Press(dragItem).Wait(1500).MoveTo(dragItem).Wait(1500).MoveTo(dropItem).Wait(1500).Release();
+                MultiAction multi = new MultiAction(Appium.Instance.Driver);
+                multi.Add(action).Perform();
+                ConsoleMessage.Pass(String.Format("{0}. Drag user with name: {1} and drop to users list", ActivityName,
+                    userName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(
+                    String.Format("{0}. Can't drag user with name: {1} and drop to users list", ActivityName, userName),
+                    ex);
+                throw;
+            }
+        }
     }
 }

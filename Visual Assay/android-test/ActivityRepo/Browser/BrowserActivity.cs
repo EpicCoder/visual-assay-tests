@@ -101,6 +101,23 @@ namespace android_test.ActivityRepo.Browser
             }
         }
 
+        public static void VerifyAssayNotExit(string assayName)
+        {
+            try
+            {
+                Assert.True(AssayList.GetInternalElement().FindElementsByName(assayName).Count == 0,
+                    String.Format("Assay with name: {0} still exist", assayName));
+                ConsoleMessage.Pass(String.Format("{0}. Verify, Assay with name: {1} not exist",
+                    ActivityName, assayName));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(String.Format("{0}. Can't verify. Assay with name: {1} exist",
+                    ActivityName, assayName), ex);
+                throw;
+            }
+        }
+
         public static void DeleteAllFlows()
         {
             try

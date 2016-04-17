@@ -10,6 +10,7 @@ namespace android_test
 
         public string AppPath { get; private set; }
         public string Team { get; private set; }
+        public string TeamRemove { get; private set; }
         public User User1 { get; private set; }
         public User User2 { get; private set; }
         public User User3 { get; private set; }
@@ -48,6 +49,7 @@ namespace android_test
             Version = ConfigurationManager.AppSettings["version"];
             var team = ConfigurationManager.AppSettings["team"];
             Team = String.Format("!{0}-{1}", Version, team);
+            TeamRemove = ConfigurationManager.AppSettings["teamRemove"];
         }
     }
 }
