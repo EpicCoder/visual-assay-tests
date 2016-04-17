@@ -75,6 +75,7 @@
     <Compile Include="ActivityRepo\ArchiveActivity.cs" />
     <Compile Include="ActivityRepo\Browser\AssayCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\AssayDeleteDialog.cs" />
+    <Compile Include="ActivityRepo\Browser\AssayShareDialog.cs" />
     <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
     <Compile Include="ActivityRepo\Browser\FlowCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\FlowTypeDialog.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Test\UserScenario\Pulse.cs" />
     <Compile Include="Test\UserScenario\RecycleBin.cs" />
     <Compile Include="Test\UserScenario\Search.cs" />
+    <Compile Include="Test\UserScenario\ShareAssayWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
