@@ -1,4 +1,5 @@
-﻿using android_test.ActivityElement;
+﻿using System;
+using android_test.ActivityElement;
 
 namespace android_test.ActivityRepo
 {
@@ -83,6 +84,22 @@ namespace android_test.ActivityRepo
                 string id = "menu_archive";
                 string name = "Archive";
                 return new AndroidButton(id, name, ActivityName);
+            }
+        }
+
+        public static void SearchItem(string name)
+        {
+            try
+            {
+                Appium.Instance.Driver.FindElementById("search_src_text").SendKeys(name + "\n");
+                ConsoleMessage.Pass(String.Format("{0}. Find search textbox and enter searched name: {1}",
+                    ActivityName, name));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(
+                    String.Format("{0}. Can't find search textbox and enter searched name: {1}", ActivityName, name), ex);
+                throw;
             }
         }
     }

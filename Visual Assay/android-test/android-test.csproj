@@ -125,6 +125,7 @@
     <Compile Include="ActivityRepo\Plugin\Plate\PlateWellEditDialog.cs" />
     <Compile Include="ActivityRepo\Pulse\PulseActivity.cs" />
     <Compile Include="ActivityRepo\Pulse\PulseCustomizeViewDialog.cs" />
+    <Compile Include="ActivityRepo\SearchActivity.cs" />
     <Compile Include="ActivityRepo\TabMenu.cs" />
     <Compile Include="ActivityRepo\Team\TeamActivity.cs" />
     <Compile Include="ActivityRepo\Team\TeamCreateDialog.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Test\UserScenario\Plate.cs" />
     <Compile Include="Test\UserScenario\Pulse.cs" />
     <Compile Include="Test\UserScenario\RecycleBin.cs" />
+    <Compile Include="Test\UserScenario\Search.cs" />
     <Compile Include="Test\UserScenario\ShareFlowWithUser.cs" />
     <Compile Include="Test\UserScenario\ShareLibraryWithUser.cs" />
   </ItemGroup>
