@@ -30,6 +30,7 @@ namespace android_test
             capabilities.SetCapability("platformName", "Android");
             capabilities.SetCapability("autoLaunch", "false");
             Driver = new AndroidDriver<AndroidElement>(new Uri("http://127.0.0.1:4723/wd/hub"), capabilities);
+            Driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
         }
     }
 }

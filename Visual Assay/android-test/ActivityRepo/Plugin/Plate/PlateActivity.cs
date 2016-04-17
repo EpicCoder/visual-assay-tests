@@ -117,7 +117,7 @@ namespace android_test.ActivityRepo.Plugin.Plate
         {
             try
             {
-                GridSize.Tap();
+                GridSize.GetInternalElement().Click();
                 Appium.Instance.Driver.FindElementByAndroidUIAutomator(
                     "new UiSelector().resourceId(\"android:id/text1\").className(\"android.widget.CheckedTextView\")" +
                     ".text(\"" + size + "\")").Click();

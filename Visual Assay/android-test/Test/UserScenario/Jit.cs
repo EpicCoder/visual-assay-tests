@@ -170,6 +170,7 @@ namespace android_test.Test.UserScenario
             string secFiled2 = "Second_Field2";
 
             FlowActivity.AddElement(element);
+            CommonOperation.Delay(1);
             FlowActivity.OpenElement(1);
             //select key field
             JitActivity.SelectKeyField.Tap();
