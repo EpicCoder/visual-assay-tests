@@ -8,6 +8,7 @@ using android_test.ActivityRepo.Browser;
 using android_test.ActivityRepo.Flow;
 using android_test.ActivityRepo.Login;
 using android_test.ActivityRepo.Plugin.Flow;
+using android_test.ActivityRepo.Team;
 using android_test.Entity;
 using NUnit.Framework;
 
@@ -31,7 +32,7 @@ namespace android_test.Test.UserScenario.FlowObject
             _user2 = Settings.Instance.User2;
             _timeout = Settings.Instance.LoginTimeout;
             _version = Settings.Instance.Version;
-            _team = Settings.Instance.Team;
+            _team = String.Format("!{0}-ShrNested", _version);
             _shareDelay = Settings.Instance.ShareDelay;
             _loginDelay = Settings.Instance.LoginDelay;
             _assay = string.Format("{0}-ChainAndExe", _version);
@@ -40,7 +41,27 @@ namespace android_test.Test.UserScenario.FlowObject
         [SetUp]
         public void Setup()
         {
-
+            try
+            {
+                ConsoleMessage.StartTest("Flow Object: Chain and Exe: Setup", "FlowObject");
+                Appium.Instance.Driver.LaunchApp();
+                LoginActivity.LoginStep(_user1, _timeout);
+                //create team
+                TabMenu.Teams.Tap();
+                TeamActivity.NewTeam.Tap();
+                TeamCreateDialog.TeamName.EnterText(_team);
+                TeamCreateDialog.Create.Tap();
+                TeamActivity.TeamMemberList.VerifyElementCountById(1, "user_picture");
+                TeamActivity.AddUserToTeam(_user2.Name);
+                TeamActivity.TeamMemberList.VerifyElementCountById(2, "user_picture");
+                CommonOperation.Delay(5);
+                TabMenu.Logout.Tap();
+            }
+            finally
+            {
+                Appium.Instance.Driver.CloseApp();
+                ConsoleMessage.EndTest();
+            }
         }
 
         [Test]
@@ -121,6 +142,12 @@ namespace android_test.Test.UserScenario.FlowObject
                 BrowserActivity.DeleteAllFlows();
                 BrowserActivity.DeleteAssay.Tap();
                 AssayDeleteDialog.Delete.Tap();
+                //delete team
+                TabMenu.Teams.Tap();
+                TeamActivity.TeamList.FindAndTap(_team);
+                TeamActivity.Dismiss.Tap();
+                TeamDeleteDialog.Delete.Tap();
+                CommonOperation.Delay(5);
 
             }
             finally

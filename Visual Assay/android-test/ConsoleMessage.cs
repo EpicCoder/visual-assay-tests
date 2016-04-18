@@ -54,7 +54,6 @@ namespace android_test
         private static string TakeScreenshot()
         {
             var screenshot = Appium.Instance.Driver.GetScreenshot();
-            string screenDir = ExcelReport.ScreenshotDir;
             string fullPath = ExcelReport.ScreenshotDir+
             "\\" + TestContext.CurrentContext.Test.FullName + "-" +
             DateTime.Now.ToString("yyyy-MM-dd--hh-mm-ss") + ".jpeg";

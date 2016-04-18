@@ -7,6 +7,7 @@ using android_test.ActivityRepo;
 using android_test.ActivityRepo.Browser;
 using android_test.ActivityRepo.Flow;
 using android_test.ActivityRepo.Login;
+using android_test.ActivityRepo.Team;
 using android_test.Entity;
 using NUnit.Framework;
 
@@ -33,13 +34,14 @@ namespace android_test.Test.UserScenario
         {
             _user1 = Settings.Instance.User1;
             _user2 = Settings.Instance.User2;
-            _team = Settings.Instance.Team;
             _timeout = Settings.Instance.LoginTimeout;
             _shareDelay = Settings.Instance.ShareDelay;
             _loginDelay = Settings.Instance.LoginDelay;
             _version = Settings.Instance.Version;
+            _team = String.Format("!{0}-ShareFlow", _version);
             _assay = string.Format("{0}-ShareFlowWithUser", _version);
             _assayRec = string.Format("{0}-Recipient", _version);
+
             //            create assay
             try
             {
@@ -48,19 +50,26 @@ namespace android_test.Test.UserScenario
                 LoginActivity.LoginStep(_user1, _timeout);
                 BrowserActivity.CreateAssay(_assay);
                 BrowserActivity.AssayList.FindAndTap(_assay);
+                //create team
+                TabMenu.Teams.Tap();
+                TeamActivity.NewTeam.Tap();
+                TeamCreateDialog.TeamName.EnterText(_team);
+                TeamCreateDialog.Create.Tap();
+                TeamActivity.TeamMemberList.VerifyElementCountById(1, "user_picture");
+                TeamActivity.AddUserToTeam(_user2.Name);
+                TeamActivity.TeamMemberList.VerifyElementCountById(2, "user_picture");
+                CommonOperation.Delay(5);
                 TabMenu.Logout.Tap();
+
                 LoginActivity.LoginStep(_user2, _timeout);
                 BrowserActivity.CreateAssay(_assayRec);
                 BrowserActivity.AssayList.FindAndTap(_assayRec);
                 TabMenu.Logout.Tap();
-                Appium.Instance.Driver.CloseApp();
-                ConsoleMessage.EndTest();
             }
-            catch (Exception)
+            finally 
             {
                 Appium.Instance.Driver.CloseApp();
                 ConsoleMessage.EndTest();
-                throw;
             }
         }
 
@@ -410,8 +419,14 @@ namespace android_test.Test.UserScenario
                 BrowserActivity.DeleteAllFlows();
                 BrowserActivity.DeleteAssay.Tap();
                 AssayDeleteDialog.Delete.Tap();
-
+                //delete team
+                TabMenu.Teams.Tap();
+                TeamActivity.TeamList.FindAndTap(_team);
+                TeamActivity.Dismiss.Tap();
+                TeamDeleteDialog.Delete.Tap();
+                CommonOperation.Delay(5);
                 TabMenu.Logout.Tap();
+
                 LoginActivity.LoginStep(_user2, _timeout);
                 BrowserActivity.AssayList.FindAndTap(_assayRec);
                 BrowserActivity.DeleteAllFlows();

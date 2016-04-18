@@ -72,13 +72,21 @@ namespace android_test.Test.UserScenario
             PlateActivity.LabelList.VerifyElementCountById(4, "component_name");
             //fill wells
             PlateActivity.LabelList.FindAndTap(comp1);
-            PlateActivity.FillWell(125, 420, 415, 420);
+            PlateActivity.TapByCoordinate(125, 420);
+            PlateActivity.TapByCoordinate(275, 420);
+            PlateActivity.TapByCoordinate(415, 420);
             PlateActivity.LabelList.FindAndTap(comp2);
-            PlateActivity.FillWell(560, 420, 845, 420);
+            PlateActivity.TapByCoordinate(560, 420);
+            PlateActivity.TapByCoordinate(700, 420);
+            PlateActivity.TapByCoordinate(845, 420);
             PlateActivity.LabelList.FindAndTap(comp3);
-            PlateActivity.FillWell(125, 560, 415, 560);
+            PlateActivity.TapByCoordinate(125, 560);
+            PlateActivity.TapByCoordinate(275, 560);
+            PlateActivity.TapByCoordinate(415, 560);
             PlateActivity.LabelList.FindAndTap(comp4);
-            PlateActivity.FillWell(560, 560, 845, 560);
+            PlateActivity.TapByCoordinate(560, 560);
+            PlateActivity.TapByCoordinate(700, 560);
+            PlateActivity.TapByCoordinate(845, 560);
             //create sheet
             PlateActivity.AddSheet.Tap();
             PlateCreateSheetDialog.Name.EnterText("Test");

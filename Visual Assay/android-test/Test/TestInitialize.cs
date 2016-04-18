@@ -34,52 +34,20 @@ namespace android_test.Test
                 TabMenu.Logout.Tap();
                 LoginActivity.LoginStep(Settings.Instance.User3, _initTimeout);
                 TabMenu.Logout.Tap();
-                //create team for share tests
-                LoginActivity.LoginStep(Settings.Instance.User1, _timeout);
-                TabMenu.Teams.Tap();
-                TeamActivity.NewTeam.Tap();
-                TeamCreateDialog.TeamName.EnterText(_teamName);
-                TeamCreateDialog.Create.Tap();
-                TeamActivity.TeamMemberList.VerifyElementCountById(1, "user_picture");
-                //add user to team
-                TeamActivity.AddUserToTeam(Settings.Instance.User2.Name);
-                TeamActivity.TeamMemberList.VerifyElementCountById(2, "user_picture");
-                TeamActivity.AddUserToTeam(Settings.Instance.User3.Name);
-                TeamActivity.TeamMemberList.VerifyElementCountById(3, "user_picture");
-                CommonOperation.Delay(5);
-                Appium.Instance.Driver.CloseApp();
-                ConsoleMessage.EndTest();
+                LoginActivity.LoginStep(Settings.Instance.User4, _initTimeout);
+                TabMenu.Logout.Tap();
             }
-            catch (Exception)
+            finally
             {
                 Appium.Instance.Driver.CloseApp();
                 ConsoleMessage.EndTest();
-                throw;
             }
         }
 
         [OneTimeTearDown]
         public void GlobalTestTearDown()
         {
-            try
-            {
-                ConsoleMessage.StartTest("Global Cleanup", "GlobalSetup");
-                Appium.Instance.Driver.LaunchApp();
-                LoginActivity.LoginStep(Settings.Instance.User1, _timeout);
-                TabMenu.Teams.Tap();
-                TeamActivity.TeamList.FindAndTap(_teamName);
-                TeamActivity.Dismiss.Tap();
-                TeamDeleteDialog.Delete.Tap();
-                CommonOperation.Delay(5);
-                Appium.Instance.Driver.CloseApp();
-                ConsoleMessage.EndTest();
-            }
-            catch (Exception)
-            {
-                Appium.Instance.Driver.CloseApp();
-                ConsoleMessage.EndTest();
-                throw;
-            }
+            
         }
     }
 }
