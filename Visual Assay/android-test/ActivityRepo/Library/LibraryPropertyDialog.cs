@@ -1,4 +1,6 @@
-﻿using android_test.ActivityElement;
+﻿using System;
+using android_test.ActivityElement;
+using NUnit.Framework;
 
 namespace android_test.ActivityRepo.Library
 {
@@ -53,6 +55,37 @@ namespace android_test.ActivityRepo.Library
                 string id = "property_value";
                 string name = "Property Value";
                 return new AndroidEditText(id, name, ActivityName);
+            }
+        }
+
+        public static AndroidLabel PropertyType
+        {
+            get
+            {
+                string id = "property_type";
+                string name = "Property Type";
+                return new AndroidLabel(id, name, ActivityName);
+            }
+        }
+
+        public static void VerifyPropertyType(string expectedText)
+        {
+            try
+            {
+                string currentText = PropertyType.GetInternalElement().FindElementById("text1").Text;
+                Assert.True(currentText.Contains(expectedText),
+                    "Element text: " + currentText + " not contain expected: " + expectedText);
+                ConsoleMessage.Pass(
+                    String.Format("{0}. Verify current element type: {1} equal to expected: {2}",
+                        ActivityName, currentText, expectedText));
+            }
+            catch (Exception ex)
+            {
+                ConsoleMessage.Fail(
+                    String.Format(
+                        "{0}. Verify current element type not equal to expected: {2}",
+                        ActivityName, expectedText), ex);
+                throw;
             }
         }
     }

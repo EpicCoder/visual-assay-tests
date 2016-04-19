@@ -79,6 +79,7 @@
     <Compile Include="ActivityRepo\Browser\BrowserActivity.cs" />
     <Compile Include="ActivityRepo\Browser\FlowCreateDialog.cs" />
     <Compile Include="ActivityRepo\Browser\FlowTypeDialog.cs" />
+    <Compile Include="ActivityRepo\ComboBoxItemDialog.cs" />
     <Compile Include="ActivityRepo\Flow\FlowActivity.cs" />
     <Compile Include="ActivityRepo\Flow\FlowDeleteDialog.cs" />
     <Compile Include="ActivityRepo\Flow\FlowElementDialog.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Test\UserScenario\FlowObject\ChainAndShareWithNested.cs" />
     <Compile Include="Test\UserScenario\FlowObject\ChangeNested.cs" />
     <Compile Include="Test\UserScenario\Jit.cs" />
+    <Compile Include="Test\UserScenario\Library.cs" />
     <Compile Include="Test\UserScenario\Plate.cs" />
     <Compile Include="Test\UserScenario\Pulse.cs" />
     <Compile Include="Test\UserScenario\RecycleBin.cs" />
