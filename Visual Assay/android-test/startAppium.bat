@@ -1,0 +1,1 @@
+"%ProgramFiles(x86)%/Appium/node.exe" "%ProgramFiles(x86)%/Appium/node_modules/appium/bin/Appium.js" --address 127.0.0.1 --port 4723 --no-reset --session-override --platform-name Android --platform-version 23 --automation-name Appium --command-timeout 180
