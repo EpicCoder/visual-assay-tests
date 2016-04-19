@@ -105,8 +105,11 @@ namespace android_test.ActivityRepo.Browser
         {
             try
             {
-                Assert.True(AssayList.GetInternalElement().FindElementsByName(assayName).Count == 0,
-                    String.Format("Assay with name: {0} still exist", assayName));
+                if (Appium.Instance.Driver.FindElementsById("project_assays").Count > 0)
+                {
+                    Assert.True(AssayList.GetInternalElement().FindElementsByName(assayName).Count == 0,
+                        String.Format("Assay with name: {0} still exist", assayName));
+                }
                 ConsoleMessage.Pass(String.Format("{0}. Verify, Assay with name: {1} not exist",
                     ActivityName, assayName));
             }

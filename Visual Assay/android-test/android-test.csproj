@@ -141,6 +141,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Test\TestRun.cs" />
     <Compile Include="Test\TestInitialize.cs" />
+    <Compile Include="Test\UserScenario\Flow.cs" />
     <Compile Include="Test\UserScenario\FlowObject\ChainAndExe.cs" />
     <Compile Include="Test\UserScenario\FlowObject\ChainAndShareWithNested.cs" />
     <Compile Include="Test\UserScenario\FlowObject\ChangeNested.cs" />
